@@ -1,7 +1,6 @@
 package com.insurely.rulesValidator;
 
 
-import com.insurely.rulesValidator.ValidatorFactory;
 import com.insurely.rulesValidator.constants.ValidationConstants;
 import com.insurely.rulesValidator.exceptions.ValidationException;
 import com.insurely.rulesValidator.rules.*;
@@ -15,7 +14,7 @@ public class ValidatorTest {
     @Test
     public void validatePersonalNumber_Valid() throws ValidationException {
         var lengthRule = new DigitsLengthValidationRule<>(ValidationConstants.SwedishPersonalNumber.MAX_LENGTH, ValidationConstants.SwedishPersonalNumber.MIN_LENGTH);
-        var luhnRule = new LuhnValidationValidationRule<>(ValidationConstants.SwedishPersonalNumber.LUHN_DIGITS_LENGTH);
+        var luhnRule = new LuhnValidationRule<>(ValidationConstants.SwedishPersonalNumber.LUHN_DIGITS_LENGTH);
         var personalNumberSpecialCharRule = new PersonalNumberSpecialCharactersValidationRule<>(ValidationConstants.SwedishPersonalNumber.SPECIAL_CHARACTER_AFTER_MIN_LENGTH, ValidationConstants.SwedishPersonalNumber.SPECIAL_CHARACTER_AFTER_MAX_LENGTH, ValidationConstants.SwedishPersonalNumber.SPECIAL_CHARACTERS);
 
         var personalNumberValidator = ValidatorFactory.createValidator(lengthRule, luhnRule, personalNumberSpecialCharRule);
@@ -38,7 +37,7 @@ public class ValidatorTest {
     @Test
     public void validatePersonalNumber_InvalidSpecialChar() {
         var lengthRule = new DigitsLengthValidationRule<>(10, 12);
-        var luhnRule = new LuhnValidationValidationRule<>(10);
+        var luhnRule = new LuhnValidationRule<>(10);
         var specialCharRule = new PersonalNumberSpecialCharactersValidationRule<>(6, 8, "[+\\-]");
 
         var personalNumberValidator = ValidatorFactory.createValidator(lengthRule, luhnRule, specialCharRule);
@@ -50,7 +49,7 @@ public class ValidatorTest {
     @Test
     public void validatePersonalNumber_InvalidLength() {
         var lengthRule = new DigitsLengthValidationRule<>(10, 12);
-        var luhnRule = new LuhnValidationValidationRule<>(10);
+        var luhnRule = new LuhnValidationRule<>(10);
         var specialCharRule = new PersonalNumberSpecialCharactersValidationRule<>(6, 8, "[+\\-]");
 
         var personalNumberValidator = ValidatorFactory.createValidator(lengthRule, luhnRule, specialCharRule);
@@ -62,7 +61,7 @@ public class ValidatorTest {
     @Test
     public void validatePersonalNumber_InvalidChecksum() {
         var lengthRule = new DigitsLengthValidationRule<>(10, 12);
-        var luhnRule = new LuhnValidationValidationRule<>(10);
+        var luhnRule = new LuhnValidationRule<>(10);
         var specialCharRule = new PersonalNumberSpecialCharactersValidationRule<>(6, 8, "[+\\-]");
 
         var personalNumberValidator = ValidatorFactory.createValidator(lengthRule, luhnRule, specialCharRule);

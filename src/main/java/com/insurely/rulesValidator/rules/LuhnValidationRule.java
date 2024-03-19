@@ -3,11 +3,11 @@ package com.insurely.rulesValidator.rules;
 
 import com.insurely.rulesValidator.constants.ValidationFailureReasons;
 
-public class LuhnValidationValidationRule<T> implements ValidationRule<T> {
+public class LuhnValidationRule<T> implements ValidationRule<T> {
 
     private final int digits;
 
-    public LuhnValidationValidationRule(int digits) {
+    public LuhnValidationRule(int digits) {
         this.digits = digits;
     }
 
