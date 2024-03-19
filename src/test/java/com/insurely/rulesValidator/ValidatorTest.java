@@ -42,7 +42,7 @@ public class ValidatorTest {
 
         var personalNumberValidator = ValidatorFactory.createValidator(lengthRule, luhnRule, specialCharRule);
 
-        String invalidPersonalNumberWithSpecialChar = "19900125*5570"; // Invalid due to special character
+        String invalidPersonalNumberWithSpecialChar = "19900125*5570";
         assertThrows(ValidationException.class, () -> personalNumberValidator.validate(invalidPersonalNumberWithSpecialChar));
     }
 
@@ -54,7 +54,7 @@ public class ValidatorTest {
 
         var personalNumberValidator = ValidatorFactory.createValidator(lengthRule, luhnRule, specialCharRule);
 
-        String invalidPersonalNumberWithInvalidLength = "19900125"; // Invalid length
+        String invalidPersonalNumberWithInvalidLength = "19900125";
         assertThrows(ValidationException.class, () -> personalNumberValidator.validate(invalidPersonalNumberWithInvalidLength));
     }
 
@@ -66,7 +66,7 @@ public class ValidatorTest {
 
         var personalNumberValidator = ValidatorFactory.createValidator(lengthRule, luhnRule, specialCharRule);
 
-        String invalidPersonalNumberWithInvalidChecksum = "199001256557"; // Invalid checksum
+        String invalidPersonalNumberWithInvalidChecksum = "199001256557";
         assertThrows(ValidationException.class, () -> personalNumberValidator.validate(invalidPersonalNumberWithInvalidChecksum));
     }
 
@@ -98,7 +98,7 @@ public class ValidatorTest {
 
         var nameValidator = ValidatorFactory.createValidator(notBlankRule, specialCharNameRule);
 
-        String invalidName = "JohnDoe123"; // Invalid characters
+        String invalidName = "JohnDoe123";
         assertThrows(ValidationException.class, () -> nameValidator.validate(invalidName));
     }
 }
