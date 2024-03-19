@@ -1,4 +1,4 @@
-package rulesValidator;
+package com.inurely.rulesValidator;
 
 
 import com.insurely.rulesValidator.ValidatorFactory;

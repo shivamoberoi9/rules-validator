@@ -1,4 +1,4 @@
-package rulesValidator.rules;
+package com.inurely.rulesValidator.rules;
 
 import com.insurely.rulesValidator.rules.LuhnValidationValidationRule;
 import org.junit.jupiter.api.Test;
